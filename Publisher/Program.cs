@@ -19,7 +19,7 @@ namespace Publisher
             {
                 
                 byte[] message = System.Text.Encoding.UTF8.GetBytes(Console.ReadLine());
-                await channel.BasicPublishAsync("Sergey", "myQueue", false, message);
+                await channel.BasicPublishAsync("Sergey", "a", false, message);
             }
 
         }
