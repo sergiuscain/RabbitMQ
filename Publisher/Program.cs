@@ -16,12 +16,16 @@ namespace Publisher
             var channel = await connection.CreateChannelAsync();
 
             while (true) 
-            {
-                
+            {   
+                for (int i = 0; i < 1000; i++)
+                {
+                    await Task.Delay(250);
+                    byte[] mes = System.Text.Encoding.UTF8.GetBytes($"message N{i}");
+                    await channel.BasicPublishAsync("Sergey", "a", false, mes);
+                }
                 byte[] message = System.Text.Encoding.UTF8.GetBytes(Console.ReadLine());
                 await channel.BasicPublishAsync("Sergey", "a", false, message);
             }
-
         }
     }
 }
